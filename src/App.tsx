@@ -1,23 +1,10 @@
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import PositioningStrip from './components/PositioningStrip'
-import Vision from './components/Vision'
-import Workflow from './components/Workflow'
-import EarlyAccess from './components/EarlyAccess'
-import Footer from './components/Footer'
-
 export default function App() {
   return (
-    <>
-      <Nav />
-      <main id="main">
-        <Hero />
-        <PositioningStrip />
-        <Vision />
-        <Workflow />
-        <EarlyAccess />
-      </main>
-      <Footer />
-    </>
+    <main className="page">
+      <h1 className="headline">
+        Agentic AI is about to transform the{' '}
+        <span className="accent">real estate world.</span>
+      </h1>
+    </main>
   )
 }
