@@ -24,13 +24,11 @@ export default function App() {
           <span className="frame__node frame__node--tr" aria-hidden="true" />
           <span className="frame__node frame__node--bl" aria-hidden="true" />
           <span className="frame__node frame__node--br" aria-hidden="true" />
-          <p className="coming">Coming Soon</p>
+          <h1 className="coming">
+            Agentic AI is about to transform the{' '}
+            <span className="accent">real estate world.</span>
+          </h1>
         </div>
-
-        <h1 className="headline">
-          Agentic AI is about to transform the{' '}
-          <span className="accent">real estate world.</span>
-        </h1>
 
         <p className="stay">
           <span className="stay__dot" aria-hidden="true" />
