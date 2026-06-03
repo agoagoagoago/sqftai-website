@@ -16,9 +16,9 @@ body,
 
 body {
   font-family: var(--font-sans);
-  color: #dcebff;
-  background-color: #030a1f;
-  background-image: radial-gradient(120% 90% at 50% -10%, #0b2a66 0%, #061540 38%, #030a1f 72%);
+  color: #f3edef;
+  background-color: #17131c;
+  background-image: radial-gradient(120% 100% at 50% 42%, #221d29 0%, #18141d 55%, #120f16 100%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -34,222 +34,139 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 3.5rem);
   padding: clamp(1.5rem, 5vw, 3rem);
   overflow: hidden;
-  isolation: isolate;
-}
-
-/* Particle dot field */
-.stage::before {
-  content: '';
-  position: absolute;
-  inset: -20%;
-  z-index: -2;
-  background-image: radial-gradient(rgba(120, 180, 255, 0.35) 1px, transparent 1.6px);
-  background-size: 40px 40px;
-  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 35%, #000 0%, transparent 75%);
-  mask-image: radial-gradient(ellipse 75% 70% at 50% 35%, #000 0%, transparent 75%);
-  opacity: 0.5;
-  animation: drift 28s linear infinite;
-}
-
-@keyframes drift {
-  to {
-    transform: translate3d(-40px, -40px, 0);
-  }
-}
-
-/* Synthwave perspective grid floor */
-.floor {
-  position: absolute;
-  bottom: -8vh;
-  left: 50%;
-  width: 240%;
-  height: 60vh;
-  z-index: -2;
-  transform: translateX(-50%) perspective(360px) rotateX(74deg);
-  transform-origin: bottom center;
-  background-image: linear-gradient(rgba(56, 160, 255, 0.55) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 160, 255, 0.55) 1px, transparent 1px);
-  background-size: 48px 48px;
-  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 78%);
-  mask-image: linear-gradient(to top, #000 0%, transparent 78%);
-  animation: floor-scroll 6s linear infinite;
-}
-
-@keyframes floor-scroll {
-  to {
-    background-position: 0 48px;
-  }
-}
-
-/* Soft colour glows */
-.glow {
-  position: absolute;
-  z-index: -1;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-}
-
-.glow--blue {
-  top: -10%;
-  left: 50%;
-  width: min(70vw, 720px);
-  height: 360px;
-  transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(28, 120, 255, 0.45), transparent 70%);
-}
-
-.glow--magenta {
-  bottom: -6%;
-  left: 50%;
-  width: min(90vw, 900px);
-  height: 320px;
-  transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(214, 70, 239, 0.32), transparent 70%);
 }
 
 /* ============================================================
-   Logo badge
+   Eclipse
    ============================================================ */
-.stage__top {
+.eclipse {
   position: relative;
-  display: flex;
-  justify-content: center;
+  width: min(80vmin, 600px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+/* Warm corona ring — bright at the top with a diamond-ring flare upper-right */
+.corona {
+  position: absolute;
+  inset: -3%;
+  border-radius: 50%;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    #ffd7d2 0deg,
+    #ffe8e2 28deg,
+    #fff5f1 46deg,
+    #f6b7be 78deg,
+    rgba(214, 120, 150, 0.42) 118deg,
+    rgba(150, 70, 110, 0.12) 168deg,
+    rgba(120, 60, 100, 0.06) 200deg,
+    rgba(150, 70, 110, 0.1) 250deg,
+    rgba(214, 120, 150, 0.32) 312deg,
+    #ffd7d2 360deg
+  );
+  filter: blur(22px);
+  animation: corona-breathe 9s ease-in-out infinite;
+}
+
+@keyframes corona-breathe {
+  0%,
+  100% {
+    opacity: 0.92;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.012);
+  }
+}
+
+/* Dark disk that masks the corona centre, leaving only the rim glow */
+.disk {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  padding-top: clamp(0.5rem, 2vw, 1.25rem);
-}
-
-.logo {
-  display: block;
-  width: clamp(220px, 30vw, 360px);
-  height: auto;
-  /* Render the brand mark in white for the dark theme, with a soft neon glow. */
-  filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(56, 160, 255, 0.55));
-}
-
-/* ============================================================
-   Body / centre content
-   ============================================================ */
-.stage__body {
-  flex: 1;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, #211b28 0%, #181420 56%, #140f19 100%);
+  box-shadow: inset 0 2px 40px rgba(255, 210, 205, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: clamp(1.1rem, 3vw, 1.8rem);
+  padding: clamp(1.5rem, 6vw, 3rem);
   text-align: center;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-  width: 100%;
 }
 
-/* Neon frame */
-.frame {
-  position: relative;
-  padding: clamp(1.4rem, 5vw, 3rem) clamp(1.8rem, 7vw, 4.5rem);
-  border: 1.5px solid rgba(96, 178, 255, 0.7);
-  border-radius: 20px;
-  background: linear-gradient(rgba(12, 40, 96, 0.35), rgba(8, 24, 64, 0.2));
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  box-shadow: 0 0 24px rgba(40, 140, 255, 0.45), 0 0 70px rgba(40, 140, 255, 0.25),
-    inset 0 0 28px rgba(40, 140, 255, 0.25);
-}
-
-.frame__node {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #7fd3ff;
-  box-shadow: 0 0 10px #38bdf8, 0 0 20px #1e90ff;
-}
-.frame__node--tl {
-  top: -5px;
-  left: -5px;
-}
-.frame__node--tr {
-  top: -5px;
-  right: -5px;
-}
-.frame__node--bl {
-  bottom: -5px;
-  left: -5px;
-}
-.frame__node--br {
-  bottom: -5px;
-  right: -5px;
+.logo {
+  display: block;
+  width: clamp(150px, 26vw, 230px);
+  height: auto;
+  /* White brand mark for the dark theme, with a soft glow. */
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.18));
 }
 
 .coming {
-  max-width: 15ch;
-  margin-inline: auto;
-  font-size: clamp(1.7rem, 5.5vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  line-height: 1.12;
-  color: #eaf5ff;
-  text-shadow: 0 0 7px rgba(160, 220, 255, 0.85), 0 0 18px #38bdf8, 0 0 40px #1273ff,
-    0 0 72px #095cfa;
-  text-wrap: balance;
-  animation: flicker 6s infinite;
-}
-
-.coming .accent {
-  color: #5fb0ff;
-  text-shadow: 0 0 8px rgba(95, 176, 255, 0.9), 0 0 22px #1e90ff, 0 0 44px #095cfa;
-}
-
-@keyframes flicker {
-  0%,
-  19%,
-  21%,
-  23%,
-  80%,
-  100% {
-    opacity: 1;
-  }
-  20%,
-  22% {
-    opacity: 0.78;
-  }
-}
-
-.stay {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  font-size: clamp(0.8rem, 1.8vw, 1rem);
-  font-weight: 600;
-  letter-spacing: 0.32em;
+  font-size: clamp(1.15rem, 4vw, 2rem);
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em; /* balance the trailing tracking */
   text-transform: uppercase;
-  color: #8fd4ff;
-  padding: 0.65em 1.4em;
-  border: 1px solid rgba(96, 178, 255, 0.4);
-  border-radius: 999px;
-  background: rgba(10, 30, 70, 0.3);
-  text-shadow: 0 0 10px rgba(95, 176, 255, 0.6);
+  color: #f6f0f2;
+  text-shadow: 0 0 18px rgba(255, 220, 220, 0.18);
 }
 
-.stay__dot {
-  width: 8px;
+/* Progress bar */
+.bar {
+  width: clamp(150px, 42%, 240px);
   height: 8px;
-  border-radius: 50%;
-  background: #38bdf8;
-  box-shadow: 0 0 8px #38bdf8, 0 0 16px #1e90ff;
-  animation: blink 2.4s ease-in-out infinite;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.11);
+  overflow: hidden;
 }
 
-@keyframes blink {
+.bar__fill {
+  display: block;
+  height: 100%;
+  width: 62%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #c75b85 0%, #e58fab 100%);
+  box-shadow: 0 0 12px rgba(229, 143, 171, 0.65);
+  animation: load 3.6s ease-in-out infinite;
+}
+
+@keyframes load {
   0%,
   100% {
-    opacity: 1;
-    transform: scale(1);
+    width: 56%;
   }
   50% {
-    opacity: 0.35;
-    transform: scale(0.7);
+    width: 68%;
   }
+}
+
+/* ============================================================
+   Headline (tagline beneath the eclipse)
+   ============================================================ */
+.headline {
+  max-width: 30ch;
+  text-align: center;
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: rgba(243, 237, 239, 0.62);
+  text-wrap: balance;
+}
+
+.headline .accent {
+  color: #e58fab;
 }
 
 /* ============================================================
