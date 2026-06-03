@@ -106,10 +106,17 @@ body {
 
 .logo {
   display: block;
-  width: clamp(150px, 26vw, 230px);
+  width: clamp(160px, 27vw, 240px);
   height: auto;
-  /* White brand mark for the dark theme, with a soft glow. */
-  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.18));
+  padding: clamp(0.5rem, 1.6vw, 0.85rem) clamp(0.9rem, 2.4vw, 1.4rem);
+  /* Soft, frameless light halo so the original navy wordmark stays legible
+     on the dark disk without a hard white box. */
+  background: radial-gradient(
+    ellipse 72% 135% at 50% 50%,
+    rgba(247, 243, 248, 0.96) 0%,
+    rgba(247, 243, 248, 0.62) 48%,
+    rgba(247, 243, 248, 0) 80%
+  );
 }
 
 .coming {
