@@ -1,0 +1,77 @@
+/*
+  SQFT AI design tokens.
+  Colours are derived directly from the official logo: a white background, a deep-navy
+  wordmark, an electric/royal-blue "AI" + mark, and pale-blue structural highlights.
+*/
+:root {
+  /* Surfaces */
+  --color-background: #ffffff;
+  --color-surface: #f7faff;
+  --color-surface-blue: #eef5ff;
+
+  /* Navy (wordmark) */
+  --color-navy: #06184f;
+  --color-navy-soft: #11265b;
+
+  /* Electric / royal blue (mark + "AI") */
+  --color-blue: #095cfa;
+  --color-blue-deep: #084be3;
+  --color-blue-light: #80aefa;
+  --color-blue-pale: #d8e8ff;
+
+  /* Lines + text */
+  --color-border: #dde7f5;
+  --color-body-text: #52627a;
+  --color-muted-text: #71819a;
+
+  /* On-blue text */
+  --color-on-blue: #ffffff;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+
+  --text-xs: 0.78rem;
+  --text-sm: 0.9rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.35rem;
+  --text-2xl: 1.7rem;
+  --text-3xl: 2.15rem;
+  --text-4xl: clamp(2rem, 6vw, 3.6rem);
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.6;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-pad: clamp(1.25rem, 4vw, 2.5rem);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* Shadows — restrained, architectural */
+  --shadow-xs: 0 1px 2px rgba(6, 24, 79, 0.05);
+  --shadow-sm: 0 4px 16px rgba(6, 24, 79, 0.06);
+  --shadow-md: 0 14px 40px rgba(6, 24, 79, 0.09);
+  --shadow-blue: 0 18px 48px rgba(9, 92, 250, 0.18);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --nav-height: 72px;
+}

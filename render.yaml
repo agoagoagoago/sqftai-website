@@ -1,0 +1,24 @@
+# Render Blueprint for the SQFT AI pre-launch landing page.
+# Static Site: Vite builds to ./dist, which Render serves over its global CDN.
+# Custom domain (sqftai.co) is configured in the Render dashboard after the first deploy.
+services:
+  - type: web
+    name: sqftai-website
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    # SPA-style fallback so any path serves the single landing page.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
