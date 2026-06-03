@@ -7,15 +7,13 @@ export default function App() {
       <div className="glow glow--magenta" aria-hidden="true" />
 
       <header className="stage__top">
-        <div className="logo-badge">
-          <img
-            className="logo"
-            src="/sqft-ai-logo.png"
-            alt="SQFT AI"
-            width={2172}
-            height={724}
-          />
-        </div>
+        <img
+          className="logo"
+          src="/sqft-ai-logo-alpha.png"
+          alt="SQFT AI"
+          width={2172}
+          height={724}
+        />
       </header>
 
       <main className="stage__body">
